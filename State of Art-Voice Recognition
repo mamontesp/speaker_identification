@@ -1,0 +1,110 @@
+Barries high quality spech applications: https://research.mozilla.org/machine-learning/
+- Affordable, production-quality voice data for trainig new applications
+- Open source engines for spech recognition an speech synthesis
+- Lack of encourage for open research
+
+Project Common Voice: Campaign by Mozilla asking people to donate recording. https://voice.mozilla.org/en/speak
+
+
+Speech Recognition: https://heartbeat.fritz.ai/the-3-deep-learning-frameworks-for-end-to-end-speech-recognition-that-power-your-devices-37b891ddc380
+	Very natural interface for human communication. 
+	Classically it is done
+	1. Speech preprocessing to get features
+	2. Acoustic models (Sounds) + Pronunciation models (Sequence of phonemes) + Language models (Sequence of words)
+	GENERATIVE MODEL OF LANGUAGE
+	Models before:
+	- Language Models: Probabilities of token sequences
+	- Pronunciation: Tables with different pronunciations
+	- Acoustics: Gaussian Mixture Models 
+
+	Models now
+	- Language Models: Neural language -> To feed speech recognition 
+	- Pronunciation: Neural network
+	- Acoustics: Deep neural networks 
+	Even speech pre-processing can be replaced with convolutional neural networks on raw speech signals.
+
+	Problem -> Independent trained neural networkds may not behave wll with errors in another component. 
+
+	Solution -> End-to-end models 
+	1. Connectionist Temporal Classification: Google + Baidu: Requires a lot of training
+
+	2. Sequence-To-Sequence: No manual customization is required
+		Makes next-step predictions, 
+		Listen - Attend -Spell (LAS)
+		Listener Architecture -> Encoder structure, for every time step of the input -> Vector representation than encodes then input (h_t at time t).
+		Speller architecture-> Decoder architecture
+		LAS: Hierarchical encoder to replace the traditional recurrent neural network
+
+		Limitations: 
+		- Wait for entire audio to be received before outputting the symbol
+		- Bottleneck -> 
+	3. Online Sequence-to-Sequence: Neural Traducer
+		Produce output as input arrives
+		Model gets improved incorporating convolutional neural networks. 
+
+
+Listen, Attend and Spell[https://arxiv.org/pdf/1508.01211.pdf]: Neural network 
+	Listener -> Pyramidal RNN that convertis low level spech signal into higher level features 
+	Speller -> RNN convert these higher level features into output utterances by specifying a probability distribution over sequences of characters usign attention mechanism.
+
+
+Vocabulary:
+	- Convolutional Neural Networks: Explicity exploit structural locality in spectral feature space. https://arxiv.org/pdf/1610.03022.pdf
+	- Network-in-Network:  Increases network depth. Increase expresive power of a network while reducing total number of parameters. https://arxiv.org/pdf/1610.03022.pdf
+	- Batch Normalization: Speeds up training and acts as regulizer. https://arxiv.org/pdf/1610.03022.pdf
+	- Residual Network: Allows to train very deep  networks without suffering from poor optimization or generalization. https://arxiv.org/pdf/1610.03022.pdf
+	- Convolutional LSTM: Use convolutions to replace inner product within LSTM unit. https://arxiv.org/pdf/1610.03022.pdf
+	- Neural Traducer: Can make incremental predictions as more input arrives. Unlike sequence-to-sequence models, the Neural Transducer computes the next-step distribution conditioned on the partially observed input sequence and the partially generated sequence. https://arxiv.org/pdf/1511.04868.pdf
+	- Attention mechanism: 
+
+
+Google RankBrain: Designed to recognize words and phrases in order to learn and better predict outcomes. It is believed that the query now goes through an interpretation model that can apply possible factors like the location of the searcher, personalization, and the words of the query to determine the searcher’s true intent.  
+
+Tools: 
+	SpeechRecognition 3.8.1 (Python): Library for performing speech recognition, with support for several engines and APIs, online and offline.
+
+Voice Recognition:
+
+End-to-End Text-Dependent Speaker Verification https://arxiv.org/pdf/1509.08062.pdf
+
+	Data-driven speaker identification
+
+	Combination of i-vector and probabilistic linear discrimant analysis
+
+	Hybrid approaches: Deep learning 
+
+	For small footprint systems: More direct deep learning modeling may be an attrative alternative. 
+
+	Recurrent Neural Networks: Speaker identificaction an language identification 
+
+
+	Proposed by paper: Neural network architecture can be though as joint optimization of a generative-discriminative hybrid and is in the same spiritn as deep unfolding for adaptation
+
+	Check sources 4-5-7
+
+Example Voice Recognition: https://subscription.packtpub.com/book/big_data_and_business_intelligence/9781787125193/9/ch09lvl1sec61/identifying-speakers-with-voice-recognition
+
+
+You can now speak using someone else’s voice with Deep Learning: https://towardsdatascience.com/you-can-now-speak-using-someone-elses-voice-with-deep-learning-8be24368fa2b
+
+New Developments in Voice Biometrics for User Authetication [2011]
+https://www.researchgate.net/publication/221491504_New_Developments_in_Voice_Biometrics_for_User_Authentication
+
+1. Joint factor analysis (JFA): For Text independent speakers
+2. Gaussian mixture models with nuisance attribute projection (GMMNAP): For Text independent speakers
+3. Hidden Markov models with NAP (HMM-NAP): Text dependent speaker
+
+
+Tools:
+	Speaker Recognition: https://github.com/ppwwyyxx/speaker-recognition: En el reporte incluyen los algoritmos. 
+
+	Accurate Online Speaker Diarization with supervised Learning: https://ai.googleblog.com/2018/11/accurate-online-speaker-diarization.html
+	https://github.com/google/uis-rnn
+
+	Speaker Recognition Microsoft: https://azure.microsoft.com/en-us/services/cognitive-services/speaker-recognition/
+
+	Science Direct: https://www.sciencedirect.com/topics/computer-science/speaker-recognition
+
+
+
+

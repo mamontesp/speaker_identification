@@ -1,0 +1,30 @@
+https://unsworks.unsw.edu.au/fapi/datastream/unsworks:51221/SOURCE02?view=true
+Six basic emotion states that are universal for all human beings 
+Anger
+Fear
+Disgust
+Joy
+Sadness
+Surprise
+
+Graphical representation of the circumplex model of affect: 
+
+Findings:
+Speaker's pitch and spech energy tends to increase with increasing positive emotion states
+
+Emotion expressions or perceptions are in general heterogeneous accross individuals, which can be affected by a wide array of factors ranging from culture background, speaker's age and gender, to speaker's health conditions. 
+
+
+Terms: 
+Speaker pitch: Fundamental frecuency of speech
+Z-normalisation
+i-vector normalization
+Speaker-dependent systems
+Spectral features:  Spectral features indicating the distribution of the spectral energy across the range of frequency of speech were shown to be effective in distinguishing between emotion categories 
+Prosodic features: pitch, jitter and shimmer, reflecting the auditory quality of sound have been shown to be indicative of emotional state. Formants and voice quality are consideren prosodic feature as well.
+Mel-frequency cepstral coefficients (MFCCs): Based on the properties of the human auditory system
+Linear predictive coefficients: Model the characteristic of the human vocal tract
+Dimensionaly reduction: There are generally two approaches for dimensionality reduction: feature selection and feature transformation
+In feature selection, the main objective is to find the feature subset that achieves the best possible system performance
+
+On the other hand, feature transform techniques aim to find a suitable linear or nonlinear mapping from the original feature space to another space with reduced dimensionality while preserving as much relevant classification/regression information as possible
