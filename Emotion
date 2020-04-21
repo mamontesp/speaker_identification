@@ -1,4 +1,24 @@
 https://unsworks.unsw.edu.au/fapi/datastream/unsworks:51221/SOURCE02?view=true
+
+http://www.eie.polyu.edu.hk/~mwmak/papers/EmotionRec3.pdf
+
+https://projets-lium.univ-lemans.fr/sidekit/_downloads/sidekit.pdf
+
+https://www.researchgate.net/profile/Ting_Dang/publication/307888998_Factor_Analysis_Based_Speaker_Normalisation_for_Continuous_Emotion_Prediction/links/5a02a1c6a6fdcc55a15ef440/Factor-Analysis-Based-Speaker-Normalisation-for-Continuous-Emotion-Prediction.pdf
+
+https://www.groundai.com/project/musan-a-music-speech-and-noise-corpus/1
+
+Project MUSAN: A Music, Speech, and Noise corpus
+
+OpenSLR Resources list= http://www.openslr.org/resources.php
+Open SLR Crowdsources high-quality Colombian speech data set: https://www.openslr.org/72/
+Language resource google: https://github.com/google/language-resources
+
+CTS NIST 2019 Challenge: https://www.nist.gov/system/files/documents/2019/07/22/2019_nist_speaker_recognition_challenge_v8.pdf
+The 2019 NIST Speaker Recognition Evaluation CTS Challenge: https://tsapps.nist.gov/publication/get_pdf.cfm?pub_id=929506
+ Speaker Diarization: https://github.com/idnavid/spkr_diarization/blob/master/code/gmm.py
+ A Gentle Introduction to Expectation-Maximization: https://machinelearningmastery.com/expectation-maximization-em-algorithm/
+
 Six basic emotion states that are universal for all human beings 
 Anger
 Fear
@@ -14,6 +34,9 @@ Speaker's pitch and spech energy tends to increase with increasing positive emot
 
 Emotion expressions or perceptions are in general heterogeneous accross individuals, which can be affected by a wide array of factors ranging from culture background, speaker's age and gender, to speaker's health conditions. 
 
+Speaker verification is a binary classification task set to answer the question:
+ Is the speaker the person he/she claims to be?
+
 
 Terms: 
 Speaker pitch: Fundamental frecuency of speech
@@ -26,5 +49,38 @@ Mel-frequency cepstral coefficients (MFCCs): Based on the properties of the huma
 Linear predictive coefficients: Model the characteristic of the human vocal tract
 Dimensionaly reduction: There are generally two approaches for dimensionality reduction: feature selection and feature transformation
 In feature selection, the main objective is to find the feature subset that achieves the best possible system performance
+On the other hand, feature transform techniques aim to find a suitable linear or nonlinear mapping from the original feature
+space to another space with reduced dimensionality while preserving as much relevant classification/regression information as possible
 
-On the other hand, feature transform techniques aim to find a suitable linear or nonlinear mapping from the original feature space to another space with reduced dimensionality while preserving as much relevant classification/regression information as possible
+HDF5: Portable file format that runs on different platforms and allow easy and readable
+serialization of data and metadata by usign a hierarchical architecture
+Used in SIDEKIT to store objects such as Mixtures, SatServers, Keys, Ndx, IdMaps
+and feature files
+The hierarchical architecture of HDF5 files allows to save several datasets or groups in the same file.
+
+Speaker detection: given a segment of speech and the target speaker enrollment data, automatically determine whether the target speaker is speaking in the segment.
+
+Trial: A segment of speech (test segment) along with the enrollment speech segment(s) 
+from a designated target speaker constitute a trial
+
+LLR: Log Likehood Ratio
+
+EM: Expectation-Maximization Algorithm is an iterative method to find maximun likelihood 
+
+Mixture model: Probabilistic model for representing the presence of subpopulations within an overall population 
+Packages
+LIBSVM: is an integrated software for support vector classification, (C-SVC, nu-SVC), regression (epsilon-SVR, nu-SVR) 
+and distribution estimation (one-class SVM)
+
+Objects in SIDEKIT
+FeatureExtractor: Takes audio files and return feature files in HD5 format
+log-energy, cepstral coefficient, filter-banck coefficient, bottleneck features
+FeatureServer: Loads one or several datasets from one or severla HDF5 files
+and post process the features
+
+Extensions
+.sph: Waveform audio file created in the NIST SPHERE 
+format, which is often used in speech recognition 
+research; often contains a recording of a person 
+speaking; can be provided as input to speech recognition 
+systems
