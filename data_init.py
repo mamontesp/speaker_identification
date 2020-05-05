@@ -183,9 +183,9 @@ class DataInitializer():
     def create_structure_data(self):
         """
         """
-        #self.preprocess_audio()
-        #self.create_id_map("enroll")
-        #self.create_id_map("test")
+        self.preprocess_audio()
+        self.create_id_map("enroll")
+        self.create_id_map("test")
         self.create_test_trials()
         self.create_ndx()
         print("Done!")

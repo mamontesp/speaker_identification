@@ -13,19 +13,20 @@ help()
 
 get_unique_speaker_id()
 {
-    echo "Parameter #1 is $1"
     filename_list=$(find $1 -name "*.wav")
     filename_basename=$(basename $filename_list)
+    rm -f speakers_id.txt
     for name in ${filename_basename}
     do
         echo $(cut -d'_' -f2 <<< $name) >> speakers_id.txt
     done
-    echo -e $(cat speakers_id.txt | sort | uniq ) > speakers_id.txt
+    echo $(cat speakers_id.txt | sort | uniq ) > speakers_id.txt
 }
 
 store_speaker_files_by_id()
 {
     echo "Main directory ${main_dir}"
+    rm -f dict_speakers.txt
     if [ -d "${main_dir}/../preprocessed_data/speakers" ]; then rm -Rf ${main_dir}/../preprocessed_data/speakers; fi
     mkdir ${main_dir}/../preprocessed_data/speakers
     results_dir="${main_dir}/../preprocessed_data/speakers"
@@ -36,7 +37,7 @@ store_speaker_files_by_id()
     do
         count=$((count+1))
         dict_speakers="dict_speakers.txt"
-        echo -e "${count},${speaker_id}" >> ${dict_speakers}
+        echo "${count},${speaker_id}" >> ${dict_speakers}
         if [ -d "${results_dir}/${count}" ]; then rm -Rf ${results_dir}/${count}; fi
         mkdir ${results_dir}/S${count}
     done 
@@ -87,7 +88,6 @@ done
 
 
 #Begin script in case all parameters are correct
-echo "Path: $data_path"
 case "$step" in
     1) get_unique_speaker_id "$data_path";;
     2) store_speaker_files_by_id "$data_path";;
