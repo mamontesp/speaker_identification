@@ -1,19 +1,17 @@
 import sidekit
 import numpy as np
-from os import listdir
-from os.path import isfile, join
+import os
 
-mypath = '../dataset/crowdsourced-colombian-spanish/es_co_female'
-onlyfiles_list = [f for f in listdir(mypath) if isfile(join(mypath, f))]
-onlyfiles_without_ext_list= []
-for f in onlyfiles_list:
-    onlyfiles_without_ext_list.append(f.split('.')[0])
+group = "test"
+output_dir="../results"
+audio_dir=output_dir+"/audio"
+feat_dir=output_dir+"/feat"
 
-print(onlyfiles_without_ext_list)
-channel_list = np.zeros_like(onlyfiles_without_ext_list, dtype = int)
+in_files = os.listdir(os.path.join(audio_dir, group))
+feat_dir = os.path.join(feat_dir, group)
 
-extractor = sidekit.FeaturesExtractor(audio_filename_structure="../dataset/crowdsourced-colombian-spanish/es_co_female/{}.wav",
-                                      feature_filename_structure="../results/crowdsourced-colombian-spanish/es_co_female/{}.h5",
+extractor = sidekit.FeaturesExtractor(audio_filename_structure=os.path.join(audio_dir, group, "{}"),
+                                      feature_filename_structure=os.path.join(feat_dir, "{}.h5"),
                                       sampling_frequency=None, 
                                       lower_frequency=200,
                                       higher_frequency=3800,
@@ -28,8 +26,28 @@ extractor = sidekit.FeaturesExtractor(audio_filename_structure="../dataset/crowd
                                       save_param=["vad", "energy", "cep", "fb"],
                                       keep_all_features=True)
 
+#Prepare file lists
+#show_list: list if IDs of the show to process
+show_list = np.unique(np.hstack([in_files]))
 
+#channel_list: list of channel indices corresponding to each show
+channel_list = np.zeros_like(show_list, dtype=int)
 
-extractor.save_list(show_list=onlyfiles_without_ext_list,
-                    channel_list=channel_list,
-                    num_thread=10)
+# save the features in feat_dir where the resulting-files parameters
+# are always concatenated in the following order:
+# (energy, fb, cep, bnf, vad_label).
+# SKIPPED: list to track faulty-files
+SKIPPED = []
+for show, channel in zip(show_list, channel_list):
+    try:
+        extractor.save(show, channel)
+    except RuntimeError:
+        print ("SKIPPED")
+        SKIPPED.append(show)
+        continue
+
+print("Number of skipped files: "+str(len(SKIPPED)))
+for show in SKIPPED:
+    print(show)
+
+    
